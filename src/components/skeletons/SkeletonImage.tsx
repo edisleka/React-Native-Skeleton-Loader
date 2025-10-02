@@ -12,7 +12,7 @@ export const SkeletonImage: React.FC<SkeletonImageProps> = ({
 }) => {
   return (
     <View
-      className='overflow-hidden'
+      className='overflow-hidden mx-6'
       style={{
         backgroundColor: SKELETON_COLORS.element,
         width: width as DimensionValue,

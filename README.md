@@ -120,10 +120,20 @@ export const ANIMATION = {
 
 // Modern, subtle color palette
 export const SKELETON_COLORS = {
-  container: '#F3F4F6',    // Base container background
-  element: '#E5E7EB',      // Element backgrounds
-  elementDark: '#D1D5DB',  // Darker elements for contrast
+  container: '#F3F4F6', // Base container background
+  element: '#E5E7EB', // Element backgrounds
+  elementDark: '#D1D5DB', // Darker elements for contrast
   shimmer: ['transparent', 'rgba(255,255,255,0.8)', 'transparent'],
+}
+
+// Vibrant accent colors for sections
+export const ACCENT_COLORS = {
+  primary: '#3B82F6', // Blue
+  secondary: '#8B5CF6', // Purple
+  success: '#10B981', // Green
+  warning: '#F59E0B', // Orange
+  danger: '#EF4444', // Red
+  info: '#06B6D4', // Cyan
 }
 ```
 

@@ -56,5 +56,26 @@ export const SKELETON_COLORS = {
   // Shimmer gradient colors
   shimmer: ['transparent', 'rgba(255,255,255,0.8)', 'transparent'] as const,
   // Alternative shimmer for darker elements
-  shimmerSubtle: ['transparent', 'rgba(255,255,255,0.5)', 'transparent'] as const,
+  shimmerSubtle: [
+    'transparent',
+    'rgba(255,255,255,0.5)',
+    'transparent',
+  ] as const,
+}
+
+// Accent colors for sections - Vibrant, modern palette
+export const ACCENT_COLORS = {
+  primary: '#3B82F6', // Blue
+  secondary: '#8B5CF6', // Purple
+  success: '#10B981', // Green
+  warning: '#F59E0B', // Orange
+  danger: '#EF4444', // Red
+  info: '#06B6D4', // Cyan
+  // Background tints (very subtle)
+  primaryBg: '#EFF6FF',
+  secondaryBg: '#F5F3FF',
+  successBg: '#ECFDF5',
+  warningBg: '#FFFBEB',
+  dangerBg: '#FEF2F2',
+  infoBg: '#ECFEFF',
 }

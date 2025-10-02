@@ -1,4 +1,4 @@
-import { RADIUS, SKELETON, SPACING } from '@/app.constants'
+import { ACCENT_COLORS, RADIUS, SKELETON, SPACING } from '@/app.constants'
 import {
   SkeletonCard,
   SkeletonImage,
@@ -6,6 +6,7 @@ import {
   SkeletonProfile,
   SkeletonText,
 } from '@/components/skeletons'
+import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -22,38 +23,80 @@ export default function SkeletonShowcase() {
     >
       {/* Header */}
       <View
-        style={{ paddingHorizontal: SPACING.lg, paddingVertical: SPACING.xl }}
+        className='rounded-3xl'
+        style={{
+          paddingHorizontal: SPACING.lg,
+          paddingVertical: SPACING.xl,
+          marginHorizontal: SPACING.lg,
+          marginBottom: SPACING.lg,
+          backgroundColor: 'rgba(59, 130, 246, 0.05)',
+          borderLeftWidth: 4,
+          borderLeftColor: ACCENT_COLORS.primary,
+        }}
       >
-        <Text
-          className='text-3xl font-bold text-gray-900'
+        <View
+          className='flex-row items-center'
           style={{ marginBottom: SPACING.sm }}
         >
-          Skeleton Loaders
-        </Text>
-        <Text className='text-base text-gray-600'>
+          <Ionicons
+            name='sparkles'
+            size={32}
+            color={ACCENT_COLORS.primary}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-3xl font-bold'
+            style={{ color: ACCENT_COLORS.primary }}
+          >
+            Skeleton Loaders
+          </Text>
+        </View>
+        <Text className='text-base text-slate-500'>
           Beautiful loading placeholders for React Native
         </Text>
       </View>
 
       {/* Profile Card Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center'
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          Profile Card
-        </Text>
+          <Ionicons
+            name='person-circle'
+            size={24}
+            color={ACCENT_COLORS.secondary}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.secondary }}
+          >
+            Profile Card
+          </Text>
+        </View>
         <SkeletonProfile avatarSize={120} showBio={true} />
       </View>
 
       {/* Card Variants Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center'
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          Card Variants
-        </Text>
+          <Ionicons
+            name='grid'
+            size={24}
+            color={ACCENT_COLORS.success}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.success }}
+          >
+            Card Variants
+          </Text>
+        </View>
         <View style={{ gap: SPACING.md }}>
           <SkeletonCard showAvatar={true} linesCount={2} />
           <SkeletonCard showAvatar={true} linesCount={3} />
@@ -63,12 +106,23 @@ export default function SkeletonShowcase() {
 
       {/* List Items Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center'
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          List Items
-        </Text>
+          <Ionicons
+            name='list'
+            size={24}
+            color={ACCENT_COLORS.warning}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.warning }}
+          >
+            List Items
+          </Text>
+        </View>
         <View>
           <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
           <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
@@ -79,12 +133,23 @@ export default function SkeletonShowcase() {
 
       {/* Image Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center '
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          Image Placeholders
-        </Text>
+          <Ionicons
+            name='image'
+            size={24}
+            color={ACCENT_COLORS.danger}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.danger }}
+          >
+            Image Placeholders
+          </Text>
+        </View>
         <View style={{ gap: SPACING.md }}>
           <SkeletonImage width='90%' aspectRatio={2} borderRadius={RADIUS.xl} />
           <View
@@ -92,17 +157,17 @@ export default function SkeletonShowcase() {
             style={{ marginHorizontal: SPACING.lg, gap: SPACING.md }}
           >
             <SkeletonImage
-              width={100}
+              width={80}
               aspectRatio={1}
               borderRadius={RADIUS.lg}
             />
             <SkeletonImage
-              width={100}
+              width={80}
               aspectRatio={1}
               borderRadius={RADIUS.lg}
             />
             <SkeletonImage
-              width={100}
+              width={80}
               aspectRatio={1}
               borderRadius={RADIUS.lg}
             />
@@ -112,12 +177,23 @@ export default function SkeletonShowcase() {
 
       {/* Text Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center'
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          Text Placeholders
-        </Text>
+          <Ionicons
+            name='text'
+            size={24}
+            color={ACCENT_COLORS.info}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.info }}
+          >
+            Text Placeholders
+          </Text>
+        </View>
         <View style={{ marginHorizontal: SPACING.lg, gap: SPACING.md }}>
           <SkeletonText width='100%' lineHeight={SKELETON.LINE_HEIGHT_LG} />
           <SkeletonText width='90%' lineHeight={SKELETON.LINE_HEIGHT_LG} />
@@ -132,12 +208,23 @@ export default function SkeletonShowcase() {
 
       {/* Custom Composition Section */}
       <View style={{ marginBottom: SPACING.xl }}>
-        <Text
-          className='text-lg font-semibold text-gray-800'
+        <View
+          className='flex-row items-center'
           style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
         >
-          Custom Composition
-        </Text>
+          <Ionicons
+            name='layers'
+            size={24}
+            color={ACCENT_COLORS.primary}
+            style={{ marginRight: SPACING.sm }}
+          />
+          <Text
+            className='text-lg font-semibold'
+            style={{ color: ACCENT_COLORS.primary }}
+          >
+            Custom Composition
+          </Text>
+        </View>
         <View
           className='bg-gray-100'
           style={{
