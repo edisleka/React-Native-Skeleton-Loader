@@ -1,56 +1,181 @@
-import { LinearGradient } from 'expo-linear-gradient'
-import React, { useEffect, useRef } from 'react'
-import { Animated, Dimensions, StyleSheet, View } from 'react-native'
+import { RADIUS, SKELETON, SPACING } from '@/app.constants'
+import {
+  SkeletonCard,
+  SkeletonImage,
+  SkeletonListItem,
+  SkeletonProfile,
+  SkeletonText,
+} from '@/components/skeletons'
+import React from 'react'
+import { ScrollView, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-const SCREEN_WIDTH = Dimensions.get('window').width
-
-export default function SkeletonLoader() {
-  const { top } = useSafeAreaInsets()
-  const shimmerAnim = useRef(new Animated.Value(0)).current
-
-  useEffect(() => {
-    Animated.loop(
-      Animated.timing(shimmerAnim, {
-        toValue: 1,
-        duration: 1500,
-        useNativeDriver: true,
-      })
-    ).start()
-  }, [])
-
-  const translateX = shimmerAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-SCREEN_WIDTH, SCREEN_WIDTH],
-  })
+export default function SkeletonShowcase() {
+  const { top, bottom } = useSafeAreaInsets()
 
   return (
-    <View
-      style={{ marginTop: top }}
-      className='mx-5 rounded-xl overflow-hidden bg-[#ccc] flex-row items-center px-4 h-[140px]'
+    <ScrollView
+      className='flex-1 bg-white'
+      style={{ paddingTop: top }}
+      contentContainerStyle={{ paddingBottom: bottom + SPACING.lg }}
+      showsVerticalScrollIndicator={false}
     >
-      <View className='w-[70px] h-[70px] rounded-full bg-[#d1d1d1]' />
-      <View className='ml-4 flex-1 justify-center'>
-        <View className='h-[14px] bg-[#d1d1d1] rounded mb-[18px] w-full' />
-        <View className='h-[14px] bg-[#d1d1d1] rounded w-[60%]' />
-      </View>
-      <Animated.View
-        style={[StyleSheet.absoluteFillObject, { transform: [{ translateX }] }]}
+      {/* Header */}
+      <View
+        style={{ paddingHorizontal: SPACING.lg, paddingVertical: SPACING.xl }}
       >
-        <LinearGradient
-          colors={['transparent', 'rgba(255,255,255,0.7)', 'transparent']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.shimmer}
-        />
-      </Animated.View>
-    </View>
+        <Text
+          className='text-3xl font-bold text-gray-900'
+          style={{ marginBottom: SPACING.sm }}
+        >
+          Skeleton Loaders
+        </Text>
+        <Text className='text-base text-gray-600'>
+          Beautiful loading placeholders for React Native
+        </Text>
+      </View>
+
+      {/* Profile Card Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          Profile Card
+        </Text>
+        <SkeletonProfile avatarSize={120} showBio={true} />
+      </View>
+
+      {/* Card Variants Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          Card Variants
+        </Text>
+        <View style={{ gap: SPACING.md }}>
+          <SkeletonCard showAvatar={true} linesCount={2} />
+          <SkeletonCard showAvatar={true} linesCount={3} />
+          <SkeletonCard showAvatar={false} linesCount={2} />
+        </View>
+      </View>
+
+      {/* List Items Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          List Items
+        </Text>
+        <View>
+          <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
+          <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
+          <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
+          <SkeletonListItem showAvatar={false} linesCount={2} />
+        </View>
+      </View>
+
+      {/* Image Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          Image Placeholders
+        </Text>
+        <View style={{ gap: SPACING.md }}>
+          <SkeletonImage width='90%' aspectRatio={2} borderRadius={RADIUS.xl} />
+          <View
+            className='flex-row'
+            style={{ marginHorizontal: SPACING.lg, gap: SPACING.md }}
+          >
+            <SkeletonImage
+              width={100}
+              aspectRatio={1}
+              borderRadius={RADIUS.lg}
+            />
+            <SkeletonImage
+              width={100}
+              aspectRatio={1}
+              borderRadius={RADIUS.lg}
+            />
+            <SkeletonImage
+              width={100}
+              aspectRatio={1}
+              borderRadius={RADIUS.lg}
+            />
+          </View>
+        </View>
+      </View>
+
+      {/* Text Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          Text Placeholders
+        </Text>
+        <View style={{ marginHorizontal: SPACING.lg, gap: SPACING.md }}>
+          <SkeletonText width='100%' lineHeight={SKELETON.LINE_HEIGHT_LG} />
+          <SkeletonText width='90%' lineHeight={SKELETON.LINE_HEIGHT_LG} />
+          <SkeletonText width='70%' lineHeight={SKELETON.LINE_HEIGHT_LG} />
+          <View style={{ marginTop: SPACING.md, gap: SPACING.sm }}>
+            <SkeletonText width='40%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+            <SkeletonText width='60%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+            <SkeletonText width='50%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+          </View>
+        </View>
+      </View>
+
+      {/* Custom Composition Section */}
+      <View style={{ marginBottom: SPACING.xl }}>
+        <Text
+          className='text-lg font-semibold text-gray-800'
+          style={{ paddingHorizontal: SPACING.lg, marginBottom: SPACING.md }}
+        >
+          Custom Composition
+        </Text>
+        <View
+          className='bg-gray-100'
+          style={{
+            marginHorizontal: SPACING.lg,
+            padding: SPACING.md,
+            borderRadius: RADIUS.xxl,
+          }}
+        >
+          <View
+            className='flex-row items-center'
+            style={{ marginBottom: SPACING.md }}
+          >
+            <View
+              className='rounded-full bg-[#d1d1d1]'
+              style={{ width: 60, height: 60 }}
+            />
+            <View className='flex-1' style={{ marginLeft: SPACING.md }}>
+              <SkeletonText width='70%' lineHeight={SKELETON.LINE_HEIGHT_MD} />
+              <View style={{ marginTop: SPACING.sm }}>
+                <SkeletonText
+                  width='50%'
+                  lineHeight={SKELETON.LINE_HEIGHT_SM}
+                />
+              </View>
+            </View>
+          </View>
+          <SkeletonImage
+            width='100%'
+            aspectRatio={1.8}
+            borderRadius={RADIUS.lg}
+          />
+          <View style={{ marginTop: SPACING.md, gap: SPACING.sm }}>
+            <SkeletonText width='100%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+            <SkeletonText width='95%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+            <SkeletonText width='80%' lineHeight={SKELETON.LINE_HEIGHT_SM} />
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  shimmer: {
-    width: 80,
-    height: '100%',
-  },
-})

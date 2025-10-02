@@ -1,8 +1,19 @@
-# Welcome to your Expo app 👋
+# React Native Skeleton Loader 🎨
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A beautiful, customizable skeleton loader library for React Native applications built with Expo, NativeWind, and TypeScript.
 
-## Get started
+## ✨ Features
+
+- 🎨 **Multiple Pre-built Components** - Card, List, Profile, Image, and Text skeletons
+- ⚡ **Smooth Shimmer Animations** - Powered by `expo-linear-gradient` and `react-native-reanimated`
+- 🎯 **Fully Typed** - Complete TypeScript support
+- 💅 **Styled with NativeWind** - Tailwind CSS for React Native
+- 📱 **Responsive & Performant** - Optimized for all screen sizes
+- 🔧 **Easy to Compose** - Build custom loading states easily
+- ⚙️ **Configurable** - Constants-based design for consistency
+- 🎨 **Theme Support** - Customizable colors and animation speeds
+
+## 📦 Installation
 
 1. Install dependencies
 
@@ -23,28 +34,148 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Quick Start
 
-## Get a fresh project
+The app includes a complete showcase of all skeleton components. Simply run the app to see them in action!
 
-When you're ready, run:
+## 📖 Usage
 
-```bash
-npm run reset-project
+Import and use any skeleton component in your app:
+
+```tsx
+import {
+  SkeletonCard,
+  SkeletonListItem,
+  SkeletonProfile,
+} from '@/components/skeletons'
+
+function MyComponent() {
+  return (
+    <View>
+      <SkeletonCard showAvatar={true} linesCount={2} />
+      <SkeletonListItem showAvatar={true} avatarSize={50} linesCount={2} />
+      <SkeletonProfile avatarSize={120} showBio={true} />
+    </View>
+  )
+}
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🧩 Available Components
 
-## Learn more
+- **SkeletonCard** - Card-style skeleton with optional avatar and text lines
+- **SkeletonListItem** - Perfect for list views with avatar and text
+- **SkeletonProfile** - Complete profile card with avatar, bio, and stats
+- **SkeletonImage** - Image placeholder with customizable dimensions
+- **SkeletonText** - Simple text line placeholder
+- **SkeletonShimmer** - Reusable shimmer effect component
 
-To learn more about developing your project with Expo, look at the following resources:
+See the [Components Documentation](./src/components/README.md) for detailed props and examples.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📁 Project Structure
 
-## Join the community
+```text
+src/
+├── app/
+│   ├── _layout.tsx       # Root layout with navigation
+│   └── index.tsx         # Showcase page with all skeleton components
+├── components/
+│   └── skeletons/        # All skeleton components
+│       ├── SkeletonCard.tsx
+│       ├── SkeletonListItem.tsx
+│       ├── SkeletonProfile.tsx
+│       ├── SkeletonImage.tsx
+│       ├── SkeletonText.tsx
+│       ├── SkeletonShimmer.tsx
+│       └── index.ts
+├── context/
+│   └── SkeletonThemeContext.tsx  # Theme configuration
+├── types/
+│   └── skeleton.types.ts         # TypeScript type definitions
+├── app.constants.tsx             # Sizing, spacing, and animation constants
+└── global.css                    # Global Tailwind styles
+```
 
-Join our community of developers creating universal apps.
+## ⚙️ Configuration
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+All constants are centralized in `src/app.constants.tsx`:
+
+```tsx
+export const SKELETON = {
+  CARD_HEIGHT: 140,
+  AVATAR_SMALL: 40,
+  AVATAR_MEDIUM: 70,
+  AVATAR_LARGE: 100,
+  LINE_HEIGHT_SM: 10,
+  LINE_HEIGHT_MD: 14,
+  LINE_HEIGHT_LG: 18,
+  SHIMMER_WIDTH: 80,
+}
+
+export const ANIMATION = {
+  SHIMMER_DURATION: 1500,
+  FAST: 300,
+  MEDIUM: 500,
+  SLOW: 1000,
+}
+```
+
+## 🛠️ Tech Stack
+
+- **[Expo](https://expo.dev)** - Universal React Native framework
+- **[React Native](https://reactnative.dev)** - Cross-platform mobile development
+- **[NativeWind](https://www.nativewind.dev/)** - Tailwind CSS for React Native
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Expo Router](https://docs.expo.dev/router/introduction/)** - File-based routing
+- **[Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)** - Shimmer effect
+- **[React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)** - Smooth animations
+
+## 🎨 Customization
+
+### Theme Configuration
+
+Wrap your app with `SkeletonThemeProvider` to customize colors and animation:
+
+```tsx
+import { SkeletonThemeProvider } from '@/context/SkeletonThemeContext'
+;<SkeletonThemeProvider
+  theme={{
+    baseColor: '#E0E0E0',
+    highlightColor: '#F0F0F0',
+    shimmerColors: ['transparent', 'rgba(255,255,255,0.7)', 'transparent'],
+    duration: 1500,
+  }}
+>
+  <YourApp />
+</SkeletonThemeProvider>
+```
+
+### Custom Compositions
+
+Easily create custom loading states by composing components:
+
+```tsx
+<View className='p-4 bg-gray-100 rounded-2xl'>
+  <View className='flex-row items-center mb-4'>
+    <View className='w-[60px] h-[60px] rounded-full bg-[#d1d1d1]' />
+    <View className='ml-3 flex-1'>
+      <SkeletonText width='70%' lineHeight={14} />
+      <View className='mt-2'>
+        <SkeletonText width='50%' lineHeight={12} />
+      </View>
+    </View>
+  </View>
+  <SkeletonImage width='100%' aspectRatio={1.8} borderRadius={12} />
+</View>
+```
+
+## 📚 Learn More
+
+To learn more about the technologies used:
+
+- [Expo Documentation](https://docs.expo.dev/) - Learn about Expo features and API
+- [NativeWind Documentation](https://www.nativewind.dev/) - Tailwind CSS for React Native
+- [React Native Documentation](https://reactnative.dev/) - Learn about React Native
+
+## 📝 License
+
+This project is open source and available for learning and development purposes.
