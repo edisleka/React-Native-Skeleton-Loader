@@ -1,4 +1,4 @@
-import { SKELETON, SPACING } from '@/app.constants'
+import { SKELETON, SKELETON_COLORS, SPACING } from '@/app.constants'
 import type { SkeletonListItemProps } from '@/types/skeleton.types'
 import React from 'react'
 import { View } from 'react-native'
@@ -12,14 +12,21 @@ export const SkeletonListItem: React.FC<SkeletonListItemProps> = ({
 }) => {
   return (
     <View
-      className='mx-6 flex-row items-center border-b border-gray-200'
-      style={{ paddingVertical: SPACING.md }}
+      className='mx-6 flex-row items-center border-b'
+      style={{
+        paddingVertical: SPACING.md,
+        borderBottomColor: SKELETON_COLORS.element,
+      }}
     >
       <View className='relative overflow-hidden flex-row items-center flex-1'>
         {showAvatar && (
           <View
-            className='rounded-full bg-[#d1d1d1]'
-            style={{ width: avatarSize, height: avatarSize }}
+            className='rounded-full'
+            style={{
+              backgroundColor: SKELETON_COLORS.element,
+              width: avatarSize,
+              height: avatarSize,
+            }}
           />
         )}
         <View
@@ -29,8 +36,9 @@ export const SkeletonListItem: React.FC<SkeletonListItemProps> = ({
           {Array.from({ length: linesCount }).map((_, index) => (
             <View
               key={index}
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.element,
                 height: SKELETON.LINE_HEIGHT_SM,
                 marginBottom: index < linesCount - 1 ? SPACING.sm : 0,
                 width: index === 0 ? '80%' : '50%',

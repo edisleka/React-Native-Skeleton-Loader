@@ -1,4 +1,4 @@
-import { RADIUS, SKELETON } from '@/app.constants'
+import { RADIUS, SKELETON, SKELETON_COLORS } from '@/app.constants'
 import type { SkeletonTextProps } from '@/types/skeleton.types'
 import React from 'react'
 import { View, type DimensionValue } from 'react-native'
@@ -12,8 +12,9 @@ export const SkeletonText: React.FC<SkeletonTextProps> = ({
 }) => {
   return (
     <View
-      className='bg-[#d1d1d1] overflow-hidden'
+      className='overflow-hidden'
       style={{
+        backgroundColor: SKELETON_COLORS.element,
         width: width as DimensionValue,
         height: lineHeight,
         borderRadius,

@@ -1,4 +1,4 @@
-import { RADIUS } from '@/app.constants'
+import { RADIUS, SKELETON_COLORS } from '@/app.constants'
 import type { SkeletonImageProps } from '@/types/skeleton.types'
 import React from 'react'
 import { View, type DimensionValue } from 'react-native'
@@ -12,8 +12,9 @@ export const SkeletonImage: React.FC<SkeletonImageProps> = ({
 }) => {
   return (
     <View
-      className='mx-6 bg-[#ccc] overflow-hidden'
+      className='mx-6 overflow-hidden'
       style={{
+        backgroundColor: SKELETON_COLORS.element,
         width: width as DimensionValue,
         aspectRatio,
         borderRadius,

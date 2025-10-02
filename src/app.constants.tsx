@@ -46,9 +46,15 @@ export const ANIMATION = {
   SLOW: 1000,
 }
 
-// Skeleton colors (for use with NativeWind)
+// Skeleton colors - Modern, subtle palette
 export const SKELETON_COLORS = {
-  base: '#E0E0E0',
-  highlight: '#F0F0F0',
-  background: '#CCCCCC',
+  // Base container background
+  container: '#F3F4F6', // Soft gray-blue
+  // Element backgrounds
+  element: '#E5E7EB', // Light gray
+  elementDark: '#D1D5DB', // Medium gray for contrast
+  // Shimmer gradient colors
+  shimmer: ['transparent', 'rgba(255,255,255,0.8)', 'transparent'] as const,
+  // Alternative shimmer for darker elements
+  shimmerSubtle: ['transparent', 'rgba(255,255,255,0.5)', 'transparent'] as const,
 }

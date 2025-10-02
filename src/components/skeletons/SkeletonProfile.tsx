@@ -1,4 +1,4 @@
-import { SKELETON, SPACING } from '@/app.constants'
+import { SKELETON, SKELETON_COLORS, SPACING } from '@/app.constants'
 import type { SkeletonProfileProps } from '@/types/skeleton.types'
 import React from 'react'
 import { View } from 'react-native'
@@ -11,39 +11,60 @@ export const SkeletonProfile: React.FC<SkeletonProfileProps> = ({
 }) => {
   return (
     <View
-      className='mx-6 rounded-2xl bg-[#ccc] overflow-hidden'
-      style={{ padding: SPACING.lg }}
+      className='mx-6 rounded-2xl overflow-hidden'
+      style={{
+        backgroundColor: SKELETON_COLORS.container,
+        padding: SPACING.lg,
+      }}
     >
       <View className='relative items-center'>
         <View
-          className='rounded-full bg-[#d1d1d1]'
+          className='rounded-full'
           style={{
+            backgroundColor: SKELETON_COLORS.element,
             width: avatarSize,
             height: avatarSize,
             marginBottom: SPACING.md,
           }}
         />
         <View
-          className='w-[60%] bg-[#d1d1d1] rounded'
-          style={{ height: SKELETON.LINE_HEIGHT_LG, marginBottom: SPACING.sm }}
+          className='w-[60%] rounded'
+          style={{
+            backgroundColor: SKELETON_COLORS.element,
+            height: SKELETON.LINE_HEIGHT_LG,
+            marginBottom: SPACING.sm,
+          }}
         />
         <View
-          className='w-[40%] bg-[#d1d1d1] rounded'
-          style={{ height: SKELETON.LINE_HEIGHT_MD, marginBottom: SPACING.md }}
+          className='w-[40%] rounded'
+          style={{
+            backgroundColor: SKELETON_COLORS.elementDark,
+            height: SKELETON.LINE_HEIGHT_MD,
+            marginBottom: SPACING.md,
+          }}
         />
         {showBio && (
           <View className='w-full' style={{ gap: SPACING.sm }}>
             <View
-              className='w-full bg-[#d1d1d1] rounded'
-              style={{ height: SKELETON.LINE_HEIGHT_SM }}
+              className='w-full rounded'
+              style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
+                height: SKELETON.LINE_HEIGHT_SM,
+              }}
             />
             <View
-              className='w-[90%] bg-[#d1d1d1] rounded self-center'
-              style={{ height: SKELETON.LINE_HEIGHT_SM }}
+              className='w-[90%] rounded self-center'
+              style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
+                height: SKELETON.LINE_HEIGHT_SM,
+              }}
             />
             <View
-              className='w-[70%] bg-[#d1d1d1] rounded self-center'
-              style={{ height: SKELETON.LINE_HEIGHT_SM }}
+              className='w-[70%] rounded self-center'
+              style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
+                height: SKELETON.LINE_HEIGHT_SM,
+              }}
             />
           </View>
         )}
@@ -53,16 +74,18 @@ export const SkeletonProfile: React.FC<SkeletonProfileProps> = ({
         >
           <View className='items-center'>
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.element,
                 width: 50,
                 paddingVertical: SPACING.xs,
                 marginBottom: SPACING.sm,
               }}
             />
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
                 width: 60,
                 height: SKELETON.LINE_HEIGHT_SM,
               }}
@@ -70,16 +93,18 @@ export const SkeletonProfile: React.FC<SkeletonProfileProps> = ({
           </View>
           <View className='items-center'>
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.element,
                 width: 50,
                 paddingVertical: SPACING.xs,
                 marginBottom: SPACING.sm,
               }}
             />
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
                 width: 60,
                 height: SKELETON.LINE_HEIGHT_SM,
               }}
@@ -87,16 +112,18 @@ export const SkeletonProfile: React.FC<SkeletonProfileProps> = ({
           </View>
           <View className='items-center'>
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.element,
                 width: 50,
                 paddingVertical: SPACING.xs,
                 marginBottom: SPACING.sm,
               }}
             />
             <View
-              className='bg-[#d1d1d1] rounded'
+              className='rounded'
               style={{
+                backgroundColor: SKELETON_COLORS.elementDark,
                 width: 60,
                 height: SKELETON.LINE_HEIGHT_SM,
               }}

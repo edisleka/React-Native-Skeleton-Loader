@@ -1,4 +1,4 @@
-import { SKELETON, SPACING } from '@/app.constants'
+import { SKELETON, SKELETON_COLORS, SPACING } from '@/app.constants'
 import type { SkeletonCardProps } from '@/types/skeleton.types'
 import React from 'react'
 import { View } from 'react-native'
@@ -11,16 +11,18 @@ export const SkeletonCard: React.FC<SkeletonCardProps> = ({
 }) => {
   return (
     <View
-      className='mx-6 rounded-xl overflow-hidden bg-[#ccc] flex-row items-center'
+      className='mx-6 rounded-xl overflow-hidden flex-row items-center'
       style={{
+        backgroundColor: SKELETON_COLORS.container,
         paddingHorizontal: SPACING.md,
         paddingVertical: SPACING.lg,
       }}
     >
       {showAvatar && (
         <View
-          className='rounded-full bg-[#d1d1d1]'
+          className='rounded-full'
           style={{
+            backgroundColor: SKELETON_COLORS.element,
             width: SKELETON.AVATAR_MEDIUM,
             height: SKELETON.AVATAR_MEDIUM,
           }}
@@ -33,8 +35,9 @@ export const SkeletonCard: React.FC<SkeletonCardProps> = ({
         {Array.from({ length: linesCount }).map((_, index) => (
           <View
             key={index}
-            className='bg-[#d1d1d1] rounded'
+            className='rounded'
             style={{
+              backgroundColor: SKELETON_COLORS.element,
               height: SKELETON.LINE_HEIGHT_MD,
               marginBottom: index < linesCount - 1 ? SPACING.md : 0,
               width: index === linesCount - 1 ? '60%' : '100%',

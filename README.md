@@ -5,12 +5,12 @@ A beautiful, customizable skeleton loader library for React Native applications 
 ## ✨ Features
 
 - 🎨 **Multiple Pre-built Components** - Card, List, Profile, Image, and Text skeletons
-- ⚡ **Smooth Shimmer Animations** - Powered by `expo-linear-gradient` and `react-native-reanimated`
+- ⚡ **Smooth 60fps Animations** - Powered by `react-native-reanimated` for UI thread performance
 - 🎯 **Fully Typed** - Complete TypeScript support
 - 💅 **Styled with NativeWind** - Tailwind CSS for React Native
-- 📱 **Responsive & Performant** - Optimized for all screen sizes
+- 📱 **Responsive & Performant** - Optimized for all screen sizes with aspect ratios
 - 🔧 **Easy to Compose** - Build custom loading states easily
-- ⚙️ **Configurable** - Constants-based design for consistency
+- ⚙️ **Configurable** - Constants-based design with padding/margin approach
 - 🎨 **Theme Support** - Customizable colors and animation speeds
 
 ## 📦 Installation
@@ -97,7 +97,7 @@ src/
 
 ## ⚙️ Configuration
 
-All constants are centralized in `src/app.constants.tsx`:
+All constants are centralized in `src/app.constants.tsx` for easy customization:
 
 ```tsx
 export const SKELETON = {
@@ -117,6 +117,14 @@ export const ANIMATION = {
   MEDIUM: 500,
   SLOW: 1000,
 }
+
+// Modern, subtle color palette
+export const SKELETON_COLORS = {
+  container: '#F3F4F6',    // Base container background
+  element: '#E5E7EB',      // Element backgrounds
+  elementDark: '#D1D5DB',  // Darker elements for contrast
+  shimmer: ['transparent', 'rgba(255,255,255,0.8)', 'transparent'],
+}
 ```
 
 ## 🛠️ Tech Stack
@@ -126,8 +134,8 @@ export const ANIMATION = {
 - **[NativeWind](https://www.nativewind.dev/)** - Tailwind CSS for React Native
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[Expo Router](https://docs.expo.dev/router/introduction/)** - File-based routing
-- **[Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)** - Shimmer effect
-- **[React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)** - Smooth animations
+- **[React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)** - 60fps UI thread animations
+- **[Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)** - Shimmer gradient effect
 
 ## 🎨 Customization
 

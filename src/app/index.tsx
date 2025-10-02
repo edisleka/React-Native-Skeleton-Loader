@@ -151,8 +151,8 @@ export default function SkeletonShowcase() {
             style={{ marginBottom: SPACING.md }}
           >
             <View
-              className='rounded-full bg-[#d1d1d1]'
-              style={{ width: 60, height: 60 }}
+              className='rounded-full'
+              style={{ width: 60, height: 60, backgroundColor: '#E5E7EB' }}
             />
             <View className='flex-1' style={{ marginLeft: SPACING.md }}>
               <SkeletonText width='70%' lineHeight={SKELETON.LINE_HEIGHT_MD} />

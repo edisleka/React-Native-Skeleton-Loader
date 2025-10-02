@@ -5,11 +5,12 @@ Beautiful, customizable skeleton loaders for React Native applications built wit
 ## Features
 
 - 🎨 Multiple pre-built skeleton components
-- ⚡ Smooth shimmer animations
+- ⚡ Smooth 60fps shimmer animations (react-native-reanimated)
 - 🎯 Fully typed with TypeScript
 - 🎨 Customizable with NativeWind classes
-- 📱 Responsive and performant
+- 📱 Responsive and performant (aspect ratio based)
 - 🔧 Easy to compose custom layouts
+- ⚙️ Padding/margin based sizing (no fixed heights)
 
 ## Components
 
@@ -112,7 +113,7 @@ Note: Card height is determined by padding and content, not a fixed height prop.
 
 ## Constants
 
-All sizing and spacing constants are defined in `src/app.constants.tsx` for consistency:
+All sizing, spacing, and color constants are defined in `src/app.constants.tsx` for consistency:
 
 ```tsx
 export const SKELETON = {
@@ -124,6 +125,13 @@ export const SKELETON = {
   LINE_HEIGHT_MD: 14,
   LINE_HEIGHT_LG: 18,
   SHIMMER_WIDTH: 80,
+}
+
+export const SKELETON_COLORS = {
+  container: '#F3F4F6',    // Base container background
+  element: '#E5E7EB',      // Element backgrounds
+  elementDark: '#D1D5DB',  // Darker elements for contrast
+  shimmer: ['transparent', 'rgba(255,255,255,0.8)', 'transparent'],
 }
 ```
 
@@ -147,10 +155,12 @@ You can customize the skeleton theme using the `SkeletonThemeProvider`:
 ## Best Practices
 
 1. Match skeleton layout to your actual content for better UX
-2. Use consistent animation duration across your app
+2. Use consistent animation duration across your app (default: 1500ms)
 3. Consider dark mode support by adjusting colors
 4. Compose simple skeletons for complex layouts
 5. Keep animations subtle and smooth
+6. Use aspect ratios for images instead of fixed heights
+7. Let content determine size with padding/margin
 
 ## Examples
 
